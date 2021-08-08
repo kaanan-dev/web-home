@@ -3,29 +3,6 @@ $(function () {
     // init feather icons
     feather.replace();
 
-    // init tooltip & popovers
-    $('[data-toggle="tooltip"]').tooltip();
-    $('[data-toggle="popover"]').popover();
-
-    //page scroll
-    $('a.page-scroll').bind('click', function (event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - 20
-        }, 1000);
-        event.preventDefault();
-    });
-
-    // slick slider
-    $('.slick-about').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        dots: true,
-        arrows: false
-    });
-
     //toggle scroll menu
     var scrollTop = 0;
     $(window).scroll(function () {
@@ -53,21 +30,35 @@ $(function () {
         return false;
     });
 
-    // scroll top top
-    $('.scroll-top').click(function () {
-        $('html, body').stop().animate({
-            scrollTop: 0
-        }, 1000);
-    });
 
-    /**Theme switcher - DEMO PURPOSE ONLY */
-    $('.switcher-trigger').click(function () {
-        $('.switcher-wrap').toggleClass('active');
-    });
-    $('.color-switcher ul li').click(function () {
-        var color = $(this).attr('data-color');
-        $('#theme-color').attr("href", "css/" + color + ".css");
-        $('.color-switcher ul li').removeClass('active');
-        $(this).addClass('active');
-    });
+    //media social
+    $('.social-media').each((index, item) => {
+        let id = $(item).children().attr('id');
+        let scmddata = Object.keys(data)
+            .filter(d => d === id.substr(id.length - 2));
+        if (!scmddata || !scmddata.length) return true;
+        $(item).children().attr('href', data[scmddata[0]]);
+
+    })
+
+    //sub
+    $('.sub').each((i,item) => {
+        let classList = $(item).attr('class').split(/\s+/);
+        let currentClass = classList.filter(d => d.substr(0,3) === 'sub' && d.length > 3);
+        if (!currentClass || !currentClass.length) return true;
+
+        let subdata =  Object.keys(sub).filter(d => d === currentClass[0].substr(currentClass[0].length - 4));
+        if (!subdata || !subdata.length) return true;
+
+        if(!$(item).attr('href')){
+            $(item).click(function(){
+                debugger;
+                location.replace(sub[subdata[0]]);
+            })
+            return true;
+        }
+        $(item).attr('href', sub[subdata[0]]);
+
+
+    })
 });
