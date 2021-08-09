@@ -52,7 +52,6 @@ $(function () {
 
         if(!$(item).attr('href')){
             $(item).click(function(){
-                debugger;
                 location.href = sub[subdata[0]];
             })
             return true;
