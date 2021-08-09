@@ -6,6 +6,6 @@ let data = {
 };
 
 let sub = {
-    'blog' : 'https://blogs.ananrafs.com',
+    'blog' : 'https://blog.ananrafs.com',
     'cuvi' : '#'
 }
