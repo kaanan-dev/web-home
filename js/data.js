@@ -7,5 +7,5 @@ let data = {
 
 let sub = {
     'blog' : 'https://blog.ananrafs.com',
-    'cuvi' : '#'
+    'pfol' : '#'
 }
