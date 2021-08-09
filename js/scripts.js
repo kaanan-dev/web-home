@@ -53,7 +53,7 @@ $(function () {
         if(!$(item).attr('href')){
             $(item).click(function(){
                 debugger;
-                location.replace(sub[subdata[0]]);
+                location.href = sub[subdata[0]];
             })
             return true;
         }
