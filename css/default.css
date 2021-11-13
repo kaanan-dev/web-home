@@ -7807,7 +7807,7 @@ footer h5 {
 .nav-media{
   position:fixed;
   right:5vw;
-  top  :60vh;
+  bottom  :10vh;
 }
 
 @keyframes fadeIn {
